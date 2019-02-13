@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
                     AS "Author Name", "category"."type" AS "Category" 
 	                FROM "books" JOIN "author" ON ("books"."author_id" = "author"."id") 
                     JOIN "category" ON ("category"."id" = "books"."category_id") 
-                    ;`
-                    )
+                    WHERE "person_id" = $1
+                    ;`,[req.user.id])
                     .then((result) => {
                         res.send(result.rows);
                     }).catch((error) => {
