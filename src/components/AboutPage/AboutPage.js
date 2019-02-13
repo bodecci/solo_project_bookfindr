@@ -10,6 +10,10 @@ const AboutPage = () => (
     <div>
       <p>
         This about page is for anyone to read!
+        BOOKFINDR is an app that helps you search your collection / library of books 
+        when you see a new book and you’ re wondering
+        if you already have the book or not in your collection.
+         
       </p>
     </div>
   </div>
