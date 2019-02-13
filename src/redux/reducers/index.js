@@ -3,6 +3,15 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 
+const bookList = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_BOOKS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -12,7 +21,8 @@ import user from './userReducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
-  user, // will have an id and username if someone is logged in
+  user,
+  bookList // will have an id and username if someone is logged in
 });
 
 export default rootReducer;

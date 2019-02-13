@@ -17,6 +17,8 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
+import BookDisplayTable from '../BookDisplay/BookDisplayTable'
+
 import './App.css';
 
 class App extends Component {
@@ -48,6 +50,10 @@ class App extends Component {
               path="/home"
               component={UserPage}
             />
+            <ProtectedRoute
+              exact path="/addbooks"
+              component={BookDisplayTable}
+              />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <ProtectedRoute

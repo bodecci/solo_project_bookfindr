@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     if(req.isAuthenticated()) {
-        pool.query(`SELECT "books"."title" AS "Book Title", "author"."name" 
-                    AS "Author Name", "category"."type" AS "Category" 
+        pool.query(`SELECT "books"."title" AS "Book_Title", "author"."name" 
+                    AS "Author_Name", "category"."type" AS "Category" 
 	                FROM "books" JOIN "author" ON ("books"."author_id" = "author"."id") 
                     JOIN "category" ON ("category"."id" = "books"."category_id") 
                     WHERE "person_id" = $1
