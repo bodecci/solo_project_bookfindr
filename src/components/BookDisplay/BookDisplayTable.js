@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import BookDisplayRow from './BookDisplayRow';
 import axios from 'axios';
 
+import './BookDisplay.css'
+
 class BookDisplayTable extends Component {
 
     componentDidMount() {
@@ -24,7 +26,7 @@ class BookDisplayTable extends Component {
 
     render () {
         return (
-            <div>
+            <div className="Book">
                 <h3>This is the Book Collection in the Library</h3>
                 <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre>
                 <table className="books">
