@@ -27,7 +27,6 @@ class BookDisplayTable extends Component {
     render () {
         return (
             <div className="Book">
-                <h3>This is the Book Collection in the Library</h3>
                 <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre>
                 <table className="books">
                 <thead>
