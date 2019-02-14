@@ -2,15 +2,9 @@ import { combineReducers } from 'redux';
 import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
+import bookList from './bookListReducer';
 
-const bookList = (state = [], action) => {
-  switch (action.type) {
-    case 'SET_BOOKS':
-      return action.payload;
-    default:
-      return state;
-  }
-};
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
