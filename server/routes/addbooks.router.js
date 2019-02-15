@@ -2,14 +2,41 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// router.post('/', (req, res) => {
-//     if(req.isAuthenticated()){
-//     const newBook = req.body;
-//     const queryText = `INSERT INTO ( )
-//                     VALUES ( ) `;
-    
-//     }
-// });
+
+router.post('/', async (req, res) => {
+    if(req.isAuthenticated()){
+        const client = await pool.connect();
+        const newBook = req.body;
+        console.log('NewBook: ', newBook);
+        
+        try{
+            await client.query('BEGIN');
+            const firstInsert = `INSERT INTO "category" ("type")
+                                VALUES ($1) RETURNING "id";`;
+            const firstResult = await client.query(firstInsert,[newBook.category]);
+            const categoryId = firstResult.rows[0].id;
+            const secondInsert = `INSERT INTO "author" ("name") VALUES ($1)
+                                RETURNING "id";`;
+            const secondResult = await client.query(secondInsert, [newBook.author]);
+            const secondId = secondResult.rows[0].id;
+
+            const lastInsert = `INSERT INTO "books" ("ISBN", "person_id", 
+                                "category_id", "title", "author_id")
+                                VALUES ($1, $2, $3, $4, $5);`
+            await client.query(lastInsert, [newBook.ISBN, req.user.id,
+                                            categoryId, newBook.title, secondId]);
+            await client.query('COMMIT') // commits all the inserts into the database
+            res.sendStatus(201);
+        } catch (error) {
+            console.log('Error in POST: ', error);
+            await client.query('ROLLBACK'); // if an error occurs, undo the earlier inserts
+            res.sendStatus(500);
+        }
+        finally {
+            client.release()
+        }
+    }
+});
 
 router.get('/', (req, res) => {
     if(req.isAuthenticated()) {
@@ -29,6 +56,8 @@ router.get('/', (req, res) => {
         res.sendStatus(403);
     }
 });
+
+
 
 
 module.exports = router;

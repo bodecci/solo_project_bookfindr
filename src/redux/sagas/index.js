@@ -2,15 +2,36 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
+import { takeEvery, put } from 'redux-saga/effects';
+import axios from 'axios'
 
 
-// function* bookSaga(){
-//   yield takeEvery('FETCH_BOOKS', fetchBooks);
-// }
+function* bookSaga(){
+  yield takeEvery('FETCH_BOOKS', fetchBooks);
+  yield takeEvery('ADD_BOOKS', postBooks);
+}
 
-// function* fetchBooks(action){
+function* fetchBooks(action){
+  try {
+    const serverResponse = yield axios.get('/api/addbooks');
+    const action = {type: 'SET_BOOKS', payload: serverResponse.data};
+    yield put(action); // triggers the reducer
+    } catch(error){
+      console.log('Error in axios GET: ', error);
+      alert('Something Went Wrong!');
+    }
+}
 
-// }
+function* postBooks(action){
+  try{
+    yield axios.post('/api/addbooks', action.payload);
+    const nextAction = {tyoe: 'FETCH_BOOKS'};
+    yield put(nextAction);
+  } catch (error) {
+    console.log('Error in POST');
+    alert('There is a problem in POST');
+  }
+}
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -24,5 +45,6 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
+    bookSaga(),
   ]);
 }
