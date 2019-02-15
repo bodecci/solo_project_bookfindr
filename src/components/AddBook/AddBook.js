@@ -7,9 +7,9 @@ class AddBook extends Component {
         // setup local state to grab the details of the new book
         this.state = {
             newBook: {
-                bookTitle: '',
-                bookAuthor: '',
-                bookCategory: '',
+                title: '',
+                author: '',
+                category: '',
                 ISBN: ''
             }
         }
@@ -19,12 +19,14 @@ class AddBook extends Component {
     addNewBook = (event) => {
         console.log('Form Submitted');
         event.preventDefault();
+        console.log('newBook:', this.state.newBook);
+        
         this.props.dispatch({type: 'ADD_BOOKS', payload: this.state.newBook});
         this.setState({
             newBook: {
-                bookTitle: '',
-                bookAuthor: '',
-                bookCategory: '',
+                title: '',
+                author: '',
+                category: '',
                 ISBN: ''
             }
         });
@@ -34,7 +36,12 @@ class AddBook extends Component {
     // using React currying to grab all the inputs at once
     handleChange = propertyName => event => {
         this.setState({
-            [propertyName]:event.target.value
+            
+            newBook: {
+                ...this.state.newBook,
+                [propertyName]: event.target.value
+            }
+            
         });
     }
 
@@ -44,17 +51,18 @@ class AddBook extends Component {
         return(
             <div>
                 <form onSubmit={this.addNewBook}>
-                    <input type="text" onChange={this.handleChange('bookTitle')} 
-                        value={this.state.newBook.bookTitle} label="Book" 
+                    <input type="text" onChange={this.handleChange('title')} 
+                        value={this.state.newBook.title} label="title" 
                         placeholder="Book Title"/>
-                    <input type="text" onChange={this.handleChange('bookAuthor')} 
-                        value={this.state.newBook.bookAuthor}
+                    <input type="text" onChange={this.handleChange('author')} 
+                        value={this.state.newBook.author}
                         placeholder="Book Author" />
                     <input type="text" onChange={this.handleChange('ISBN')} 
                         value={this.state.newBook.ISBN}
                         placeholder="ISBN #" />
-                    <select onChange={this.handleChange('bookCategory')} 
-                        placeholder="Category">
+                    <select onChange={this.handleChange('category')}
+                        defaultValue={this.state.newBook.category} 
+                        placeholder="category">
                         <option value=""></option>
                         <option value="1">Childrens</option>
                         <option value="2">YA</option>
