@@ -25,7 +25,9 @@ function* fetchBooks(action){
 function* postBooks(action){
   try{
     yield axios.post('/api/addbooks', action.payload);
-    const nextAction = {tyoe: 'FETCH_BOOKS'};
+    console.log('action.payload: ', action.payload);
+    
+    const nextAction = {type: 'FETCH_BOOKS'};
     yield put(nextAction);
   } catch (error) {
     console.log('Error in POST');
