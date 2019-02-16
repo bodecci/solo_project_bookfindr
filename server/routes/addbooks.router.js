@@ -40,8 +40,8 @@ router.post('/', async (req, res) => {
 
 router.get('/', (req, res) => {
     if(req.isAuthenticated()) {
-        pool.query(`SELECT "books"."title" AS "Book_Title", "author"."name" 
-                    AS "Author_Name", "category"."type" AS "Category" 
+        pool.query(`SELECT "books"."id" AS "ID", "books"."title" AS "Book_Title", 
+                    "author"."name" AS "Author_Name", "category"."type" AS "Category" 
 	                FROM "books" JOIN "author" ON ("books"."author_id" = "author"."id") 
                     JOIN "category" ON ("category"."id" = "books"."category_id") 
                     WHERE "person_id" = $1
@@ -55,6 +55,17 @@ router.get('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
+});
+
+router.delete('/:id', (req, res) => {
+    console.log('req.params: ', req.params);
+    const queryText = `DELETE FROM "books" WHERE id=$1;`;
+    pool.query(queryText, [req.params.id]).then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error in Delete route: ', error);
+        res.sendStatus(500);
+    });
 });
 
 
