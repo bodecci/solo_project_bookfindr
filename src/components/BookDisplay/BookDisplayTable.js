@@ -36,12 +36,13 @@ class BookDisplayTable extends Component {
                         <th>Book Title</th>
                         <th>Author Name</th>
                         <th>Category</th>
+                        <th>Remove Book</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.reduxState.bookList.map((book) =>
-                        <BookDisplayRow key={book.id} book={book} />
-                    )}
+                    {this.props.reduxState.bookList.map((book, id) => {
+                      return (<BookDisplayRow key={id} book={book} />);
+                    })}
                 </tbody>
                 </table>
             </div>

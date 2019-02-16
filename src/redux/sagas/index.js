@@ -9,6 +9,7 @@ import axios from 'axios'
 function* bookSaga(){
   yield takeEvery('FETCH_BOOKS', fetchBooks);
   yield takeEvery('ADD_BOOKS', postBooks);
+  yield takeEvery('DELETE_BOOKS', deleteBooks )
 }
 
 function* fetchBooks(action){
@@ -32,6 +33,19 @@ function* postBooks(action){
   } catch (error) {
     console.log('Error in POST');
     alert('There is a problem in POST');
+  }
+}
+
+function* deleteBooks(action) {
+  try{
+    yield axios.delete(`/api/addbooks/${action.payload}`);
+    console.log('action.payload ', action.payload);
+    
+    const nextAction = {type: 'FETCH_BOOKS'};
+    yield put(nextAction);
+  } catch (error) {
+    console.log('Error in DELETE: ', error);
+    alert('Something went wrong')
   }
 }
 
