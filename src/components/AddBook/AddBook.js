@@ -64,11 +64,11 @@ class AddBook extends Component {
                         defaultValue={this.state.newBook.category} 
                         placeholder="category">
                         <option value=""></option>
-                        <option value="1">Childrens</option>
-                        <option value="2">YA</option>
-                        <option value="3">Fiction</option>
-                        <option value="4">Self Help</option>
-                        <option value="5">Biography</option>
+                        <option value="Childrens">Childrens</option>
+                        <option value="YA">YA</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Self Help">Self Help</option>
+                        <option value="Biography">Biography</option>
                     </select>
                 <input className='submitBtn' type='Submit' value='Add Book'/>
                 </form>
