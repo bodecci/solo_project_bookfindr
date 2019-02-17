@@ -2,16 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import 'typeface-roboto';
+import Typography from '@material-ui/core/Typography';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
   <div>
-    <h1 id="welcome">
-      Welcome, { props.user.username }!
-    </h1>
-    <p>Your ID is: {props.user.id}</p>
+    {/* <h1 >
+      Welcome, 
+    </h1> */}
+
+    <Typography id="welcome" variant="h5" gutterBottom>
+        Welcome, { props.user.username }!
+      </Typography>
+      <Typography id="welcome" variant="h5" gutterBottom>
+        Your ID is: {props.user.id}
+      </Typography>
+    {/* <p>Your ID is: {props.user.id}</p> */}
     <LogOutButton className="log-in" />
   </div>
 );

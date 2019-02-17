@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
 
 class AddBook extends Component {
     constructor(props){
@@ -50,17 +56,75 @@ class AddBook extends Component {
     render(){
         return(
             <div>
+
+            
+
                 <form onSubmit={this.addNewBook}>
-                    <input type="text" onChange={this.handleChange('title')} 
-                        value={this.state.newBook.title} label="title" 
-                        placeholder="Book Title"/>
-                    <input type="text" onChange={this.handleChange('author')} 
+                <FormControl>
+                <p>Add Book</p>
+                    <TextField
+                        id="Book_Title"
+                        placeholder="Book Title"
+                        margin="normal"
+                        variant="filled"
+                        type="text" onChange={this.handleChange('title')} 
+                        value={this.state.newBook.title} />
+                    {/* <input type="text" onChange={this.handleChange('author')} 
                         value={this.state.newBook.author}
-                        placeholder="Book Author" />
-                    <input type="text" onChange={this.handleChange('ISBN')} 
+                        placeholder="Book Author" /> */}
+                    <TextField
+                        id="Book_Author"
+                        label="Author"
+                        placeholder="Book Author"
+                        margin="normal"
+                        variant="filled"
+                        type="text" onChange={this.handleChange('author')} 
+                        value={this.state.newBook.author} />
+                    {/* <input type="text" onChange={this.handleChange('ISBN')} 
                         value={this.state.newBook.ISBN}
-                        placeholder="ISBN #" />
-                    <select onChange={this.handleChange('category')}
+                        placeholder="ISBN #" /> */}
+                    <TextField
+                        id="ISBN"
+                        label="ISBN"
+                        placeholder="ISBN #"
+                        margin="normal"
+                        variant="filled"
+                        type="text" onChange={this.handleChange('ISBN')} 
+                        value={this.state.newBook.ISBN} />
+                        <pre></pre>
+                    <FormControl>
+                    <InputLabel htmlFor="Category">Category</InputLabel>
+                    <Select
+                        value={this.state.newBook.category}
+                        label="Category"
+                        placeholder="Category"
+                        onChange={this.handleChange('category')}
+                        defaultValue={this.state.newBook.category} >
+                            <MenuItem value="YA">YA</MenuItem>
+                            <MenuItem value="Childrens">Childrens</MenuItem>
+                            <MenuItem value="Fiction">Fiction</MenuItem>
+                            <MenuItem value="Self Help">Self Help</MenuItem>
+                            <MenuItem value="Biography">Biography</MenuItem>
+                    </Select>
+                    </FormControl>
+                    
+        {/* <FormControl>
+          <InputLabel htmlFor="category-native-simple">Category</InputLabel>
+          <Select onChange={this.handleChange('category')}
+            native
+            defaultValue={this.state.newBook.category}
+            inputProps={{
+              name: 'category',
+              id: 'category-native-simple',}}>
+            <option value="" />
+            <option value="Childrens">Childrens</option>
+            <option value="YA">YA</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Self Help">Self Help</option>
+            <option value="Biography">Biography</option>
+          </Select>
+        </FormControl> */}
+                    {/* <select onChange={this.handleChange('category')}
                         defaultValue={this.state.newBook.category} 
                         placeholder="category">
                         <option value=""></option>
@@ -69,8 +133,10 @@ class AddBook extends Component {
                         <option value="Fiction">Fiction</option>
                         <option value="Self Help">Self Help</option>
                         <option value="Biography">Biography</option>
-                    </select>
-                <input className='submitBtn' type='Submit' value='Add Book'/>
+                    </select> */}
+                <Button variant="contained" type='Submit' value='Add Book'>
+                Add Book</Button>
+                </FormControl>
                 </form>
             </div>
         )
