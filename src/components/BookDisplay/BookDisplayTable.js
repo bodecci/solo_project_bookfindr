@@ -1,9 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BookDisplayRow from './BookDisplayRow';
-import axios from 'axios';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 
-import './BookDisplay.css'
+import './BookDisplay.css';
+
+// declarations for table styles
+const CustomTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+    },
+}))(TableCell);
+
+const styles = theme => ({
+    root: {
+        width: '100%',
+        marginTop: theme.spacing.unit * 3,
+        overflowX: 'auto',
+    },
+    table: {
+        minWidth: 700,
+    },
+    row: {
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.background.default,
+        },
+    },
+});
 
 class BookDisplayTable extends Component {
 
@@ -14,38 +47,31 @@ class BookDisplayTable extends Component {
     getBook = () => {
         const action = {type: 'FETCH_BOOKS'};
         this.props.dispatch(action);
-        // axios({
-        //     method: 'GET',
-        //     url: '/api/addbooks'
-        // }).then((response) => {
-        //     const action = {type: 'SET_BOOKS', payload: response.data};
-        //     this.props.dispatch(action);
-        // }).catch((error) => {
-        //     console.log('Error in GET: ', error);
-        //     alert('Something Went Wrong!')
-        // });
     }
 
     render() {
         return (
             <div className="Book">
                 <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre>
-                <table className="books">
-                <thead>
-                    <tr>
-                        <th>Book Title</th>
-                        <th>Author Name</th>
-                        <th>Category</th>
-                        <th>Remove Book</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.reduxState.bookList.map((book, id) => {
+
+    <Paper>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <CustomTableCell align="left">Book Title</CustomTableCell>
+            <CustomTableCell align="left">Author Name</CustomTableCell>
+            <CustomTableCell align="left">Category</CustomTableCell>
+            <CustomTableCell align="left">Remove Book</CustomTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+                {this.props.reduxState.bookList.map((book, id) => {
                       return (<BookDisplayRow key={id} book={book} />);
                     })}
-                </tbody>
-                </table>
-            </div>
+        </TableBody>
+        </Table>
+        </Paper>
+        </div>
         );
     }
 }
