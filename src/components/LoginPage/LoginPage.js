@@ -99,12 +99,12 @@ class LoginPage extends Component {
             <Fab
               variant="extended"
               size="medium"
-              color="green"
+              // color="green"
               aria-label="Add"
               className = "log-in"
               type = "submit"
               name = "submit"
-              value = "Log In"
+              // value = "Log In"
               type="button" 
               onClick={this.login}>
             Log In

@@ -7,6 +7,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 
+import './Addbook.css';
+
 class AddBook extends Component {
     constructor(props){
         super(props);
@@ -107,34 +109,9 @@ class AddBook extends Component {
                             <MenuItem value="Biography">Biography</MenuItem>
                     </Select>
                     </FormControl>
-                    
-        {/* <FormControl>
-          <InputLabel htmlFor="category-native-simple">Category</InputLabel>
-          <Select onChange={this.handleChange('category')}
-            native
-            defaultValue={this.state.newBook.category}
-            inputProps={{
-              name: 'category',
-              id: 'category-native-simple',}}>
-            <option value="" />
-            <option value="Childrens">Childrens</option>
-            <option value="YA">YA</option>
-            <option value="Fiction">Fiction</option>
-            <option value="Self Help">Self Help</option>
-            <option value="Biography">Biography</option>
-          </Select>
-        </FormControl> */}
-                    {/* <select onChange={this.handleChange('category')}
-                        defaultValue={this.state.newBook.category} 
-                        placeholder="category">
-                        <option value=""></option>
-                        <option value="Childrens">Childrens</option>
-                        <option value="YA">YA</option>
-                        <option value="Fiction">Fiction</option>
-                        <option value="Self Help">Self Help</option>
-                        <option value="Biography">Biography</option>
-                    </select> */}
-                <Button variant="contained" type='Submit' value='Add Book'>
+                
+                <Button className="button" variant="contained" color="default" 
+                        type='Submit' value='Add Book'>
                 Add Book</Button>
                 </FormControl>
                 </form>
