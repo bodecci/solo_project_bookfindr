@@ -111,7 +111,7 @@ class AddBook extends Component {
                     </FormControl>
                 
                 <Button className="button" variant="contained" color="default" 
-                        type='Submit' value='Add Book'>
+                        type = "Submit">
                 Add Book</Button>
                 </FormControl>
                 </form>

@@ -4,6 +4,16 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import 'typeface-roboto';
 import Typography from '@material-ui/core/Typography';
 
+
+
+const styles = theme => ({
+      margin: {
+        margin: theme.spacing.unit,
+      }
+    });
+
+
+
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
@@ -16,9 +26,9 @@ const UserPage = (props) => (
     <Typography id="welcome" variant="h5" gutterBottom>
         Welcome, { props.user.username }!
       </Typography>
-      <Typography id="welcome" variant="h5" gutterBottom>
+      {/* <Typography id="welcome" variant="h5" gutterBottom>
         Your ID is: {props.user.id}
-      </Typography>
+      </Typography> */}
     {/* <p>Your ID is: {props.user.id}</p> */}
     <LogOutButton className="log-in" />
   </div>
