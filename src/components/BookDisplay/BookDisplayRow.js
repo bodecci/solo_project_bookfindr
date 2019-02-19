@@ -38,7 +38,8 @@ class BookDisplayRow extends Component {
               <CustomTableCell align="left">{this.props.book.Category}</CustomTableCell>
               <CustomTableCell align="left">
 
-                    <IconButton color="secondary" onClick={this.deleteBook} aria-label="Delete">
+                    <IconButton color="secondary" onClick={this.deleteBook} 
+                                aria-label="Delete">
                          <DeleteIcon />
                     </IconButton>
                                 {/* <Button type='Delete'

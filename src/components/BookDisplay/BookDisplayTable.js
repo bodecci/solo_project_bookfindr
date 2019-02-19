@@ -51,13 +51,12 @@ class BookDisplayTable extends Component {
 
     render() {
         return (
-            <div className="Book">
+            <div class="Book">
                 <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre>
-
     <Paper>
       <Table>
         <TableHead>
-          <TableRow>
+          <TableRow position="fixed">
             <CustomTableCell align="left">Book Title</CustomTableCell>
             <CustomTableCell align="left">Author Name</CustomTableCell>
             <CustomTableCell align="left">Category</CustomTableCell>
