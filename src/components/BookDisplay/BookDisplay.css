@@ -2,6 +2,24 @@
     text-align: center;
 }
 
+.MessTHead {
+    background-color: rgb(231, 231, 231);
+    position: sticky;
+    top: 0;
+}
+
+.MessRow {
+    position: sticky;
+    top: 0;
+    
+}
+
+.sticky {
+    position: fixed;
+    top: auto;
+    width: 250;
+}
+
 .App-header {
     background-color: #222;
     height: 150px;
