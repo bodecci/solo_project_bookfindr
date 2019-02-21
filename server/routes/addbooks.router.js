@@ -68,6 +68,38 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.put('/:id', async (req, res) => {
+    if(req.isAuthenticated){
+        const client = await pool.connect();
+        const updateBook = req.body;
+        const updateId = req.params.id;
+        console.log('updateBook', req.body);
+
+
+        try {
+            await client.query('BEGIN');
+            const firstUpdate =`UPDATE "books" SET "title" = $1
+                                WHERE "id" = $2;`;
+            const firstResult = await client.query(firstUpdate, [updateBook.title,updateId]);
+            // const categoryId = firstResult.rows[0].id;
+            // const secondUpdate = `UPDATE "author" SET "author"."name" = $2
+            //                     WHERE "id" = $1;`;
+            // const secondResult = await client.query(secondUpdate)
+            await client.query('COMMIT') // commits all the inserts into the database
+            res.sendStatus(201);
+        } catch (error) {
+            console.log('Error in POST: ', error);
+            await client.query('ROLLBACK'); // if an error occurs, undo the earlier inserts
+            res.sendStatus(500);
+        } finally {
+            client.release()
+        }
+       
+
+    }
+    
+});
+
 
 
 

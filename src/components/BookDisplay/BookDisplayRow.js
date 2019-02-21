@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Fab from '@material-ui/core/Fab';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -17,6 +18,7 @@ const CustomTableCell = withStyles(theme => ({
         fontSize: 14,
     },
 }))(TableCell);
+
 
 class BookDisplayRow extends Component {
 
@@ -46,6 +48,9 @@ class BookDisplayRow extends Component {
                                 color="secondary"
                                 onClick={this.deleteBook}>
                                 Delete</Button> */}
+              </CustomTableCell>
+              <CustomTableCell align="left">
+              <button>EDIT</button>
               </CustomTableCell>
             </TableRow>
         );

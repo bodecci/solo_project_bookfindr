@@ -14,6 +14,7 @@ class AddBook extends Component {
         super(props);
         // setup local state to grab the details of the new book
         this.state = {
+            open: false,
             newBook: {
                 title: '',
                 author: '',
@@ -44,7 +45,7 @@ class AddBook extends Component {
     // using React currying to grab all the inputs at once
     handleChange = propertyName => event => {
         this.setState({
-            
+            // ...this.state,
             newBook: {
                 ...this.state.newBook,
                 [propertyName]: event.target.value
@@ -56,6 +57,8 @@ class AddBook extends Component {
 
 
     render(){
+        console.log(this.state);
+        
         return(
             <div>
 

@@ -7,34 +7,43 @@ import AddIcon from '@material-ui/icons/Add';
 import './LandingPage.css';
 
 class LandingPage extends Component {
-    constructor(props){
-        super(props)
+    
+    handleSearchClick = () => {
+        console.log('Search clicked');
+        
+    } 
+
+    handleViewClick = () => {
+        console.log('View Clicked');
+        this.props.history.push('/addbooks');
+        
     }
 
     render() {
         return (
             <div>
                 
-
+                <div className="divSize">
                 <Typography id="welcome" variant="h5" gutterBottom>
                 Welcome, {this.props.user.username}!
                 </Typography>
 
-                <button className ="bttnSize" >
-                    VIEW 
+                <button className ="bttnSize" onClick={this.handleViewClick}>
+                    VIEW<p>collection</p> 
                     </button>
                     <br></br>
 
-                < button className = "bttnSize" >
-                    Search
+                < button className = "bttnSize" onClick={this.handleSearchClick} >
+                   SEARCH<p>Library</p>
                 </button>
 
                 <div className="bttnSize">
                 <br></br>
-                <Fab color="primary" aria-label="Add" 
+                 <Fab color="primary" aria-label="Add" 
                     align="center">
                     <AddIcon />
-                </Fab>
+                </Fab><p>Add Books</p>
+                </div>
                 </div>
 
             </div>

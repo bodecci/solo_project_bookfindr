@@ -61,6 +61,7 @@ class BookDisplayTable extends Component {
             <CustomTableCell align="left">Author Name</CustomTableCell>
             <CustomTableCell align="left">Category</CustomTableCell>
             <CustomTableCell align="left">Remove Book</CustomTableCell>
+            <CustomTableCell align="left">Edit</CustomTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
