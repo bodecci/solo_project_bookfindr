@@ -6,6 +6,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import swal from 'sweetalert';
 
 import './Addbook.css';
 
@@ -14,7 +15,6 @@ class AddBook extends Component {
         super(props);
         // setup local state to grab the details of the new book
         this.state = {
-            open: false,
             newBook: {
                 title: '',
                 author: '',
@@ -24,8 +24,10 @@ class AddBook extends Component {
         }
     }
 
+
     // dispatch the new book entered to the reducer
     addNewBook = (event) => {
+        swal("Good Job!", "book added to library", "success");
         console.log('Form Submitted');
         event.preventDefault();
         console.log('newBook:', this.state.newBook);

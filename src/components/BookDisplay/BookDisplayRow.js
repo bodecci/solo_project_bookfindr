@@ -21,12 +21,24 @@ const CustomTableCell = withStyles(theme => ({
 
 
 class BookDisplayRow extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            open: false
+        }
+    }
 
     deleteBook = () => {
         console.log('payload: ', this.props.book.ID);
         const action ={type: 'DELETE_BOOKS', payload: this.props.book.ID};
         
         this.props.dispatch(action);
+    }
+
+    editBook = () => {
+        console.log('');
+        
     }
 
     
@@ -50,7 +62,7 @@ class BookDisplayRow extends Component {
                                 Delete</Button> */}
               </CustomTableCell>
               <CustomTableCell align="left">
-              <button>EDIT</button>
+              <button onClick={this.editBook}>EDIT</button>
               </CustomTableCell>
             </TableRow>
         );
