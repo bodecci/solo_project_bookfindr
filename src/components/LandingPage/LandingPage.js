@@ -10,6 +10,7 @@ class LandingPage extends Component {
     
     handleSearchClick = () => {
         console.log('Search clicked');
+        this.props.history.push('/search');
         
     } 
 

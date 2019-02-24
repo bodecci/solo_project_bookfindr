@@ -51,7 +51,7 @@ class BookDisplayTable extends Component {
 
     render() {
         return (
-            <div class="Book">
+            <div className="Book">
                 <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre>
     <Paper>
       <Table>

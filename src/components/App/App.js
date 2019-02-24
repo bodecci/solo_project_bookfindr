@@ -14,11 +14,11 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 
-import BookCollection from '../BookCollection/BookCollection'
+import BookCollection from '../BookCollection/BookCollection';
+import Search from '../Search/Search';
 
 import './App.css';
 
@@ -55,6 +55,10 @@ class App extends Component {
               exact path="/addbooks"
               component={BookCollection}
               />
+              <ProtectedRoute
+                exact path="/search"
+                component={Search}
+                />
 
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}

@@ -57,6 +57,28 @@ router.get('/', (req, res) => {
     }
 });
 
+router.get('/search/:bookSearch', (req, res) => {
+    if(req.isAuthenticated()) {
+        const queryTerm = (req.params.bookSearch);
+        console.log('bookSearch :', queryTerm);
+        console.log(req.user.id);
+        
+        
+        pool.query(`SELECT * FROM "books" WHERE "books"."title" ILIKE $1
+    AND "person_id" = $2;`, [queryTerm,req.user.id])
+    .then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('Error in GET for search: ', error);
+        res.sendStatus(500);
+        });
+    } else {
+        res.sendStatus(403)
+    }
+});
+
+
+
 router.delete('/:id', (req, res) => {
     console.log('req.params: ', req.params);
     const queryText = `DELETE FROM "books" WHERE id=$1;`;
@@ -82,10 +104,10 @@ router.put('/:id', async (req, res) => {
                                 WHERE "id" = $2;`;
             const firstResult = await client.query(firstUpdate, [updateBook.title,updateId]);
             // const categoryId = firstResult.rows[0].id;
-            // const secondUpdate = `UPDATE "author" SET "author"."name" = $2
-            //                     WHERE "id" = $1;`;
-            // const secondResult = await client.query(secondUpdate)
-            await client.query('COMMIT') // commits all the inserts into the database
+            // const secondUpdate = `UPDATE "author" SET "author"."name" = $1
+            //                       WHERE "id" = $2;`;
+            // await client.query(secondUpdate, [updateBook.author, categoryId]);
+            // await client.query('COMMIT') // commits all the inserts into the database
             res.sendStatus(201);
         } catch (error) {
             console.log('Error in POST: ', error);
