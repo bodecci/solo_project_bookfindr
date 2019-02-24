@@ -62,7 +62,7 @@ class Search extends Component {
 
              <table className="AnimalList">
                 <thead>
-                    <tr><th>Book Title</th><th>ISBN #</th></tr>
+                    <tr><th>Title</th><th>Author</th><th>ISBN #</th></tr>
                 </thead>
                 <tbody>
                     {/* Render each item from the zooAnimal reducer */}

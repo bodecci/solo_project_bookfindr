@@ -18,6 +18,7 @@ class SearchTable extends Component {
                 <tr>
                     <td>{this.props.book.title}</td>
                     <td>{this.props.book.ISBN}</td>
+                    <td>{this.props.book.name}</td>
                 </tr>
             </div>
         )
