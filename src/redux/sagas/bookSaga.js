@@ -62,15 +62,15 @@ function* editBooks (action){
 
 function* searchBooks (action){
     try {
-        console.log('payload: ', action.payload.title);
-        const searchTerm = (action.payload.title);
+        console.log('payload: ', action.payload);
+        const searchTerm = (action.payload);
         
         const serverResponse = yield axios.get(`api/addbooks/search/${searchTerm}`);
-        const action = {
+        const naction = {
             type: 'SET_BOOKS',
-            payload: serverResponse
+            payload: serverResponse.data
         };
-        yield put(action);
+        yield put(naction);
     } catch (error) {
         console.log('Error in Search GET: ', error);
         alert(`There's a problem in GET for search`);

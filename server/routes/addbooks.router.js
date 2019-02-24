@@ -64,7 +64,7 @@ router.get('/search/:bookSearch', (req, res) => {
         console.log(req.user.id);
         
         
-        pool.query(`SELECT * FROM "books" WHERE "books"."title" ILIKE $1
+        pool.query(`SELECT "books"."title", "books"."ISBN" FROM "books" WHERE "books"."title" ILIKE $1
     AND "person_id" = $2;`, [queryTerm,req.user.id])
     .then((result) => {
         res.send(result.rows);

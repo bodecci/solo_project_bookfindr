@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import SearchTable from './SearchTable';
 
 class Search extends Component {
     constructor (props){
@@ -18,9 +19,9 @@ class Search extends Component {
     searchBook = (event) => {
         console.log('Form submitted in Update');
         event.preventDefault();
-        console.log('searchBook: ', this.state.searchBook);
+        console.log('searchBook: ', this.state.searchBook.title + '%');
         
-        this.props.dispatch({type: 'SEARCH_BOOKS', payload: this.state.searchBook});
+        this.props.dispatch({type: 'SEARCH_BOOKS', payload: this.state.searchBook.title});
         this.setState({
             searchBook: {
                 title: ''
@@ -58,6 +59,19 @@ class Search extends Component {
                         SEARCH</Button>
                         </FormControl>
                 </form>
+
+             <table className="AnimalList">
+                <thead>
+                    <tr><th>Book Title</th><th>ISBN #</th></tr>
+                </thead>
+                <tbody>
+                    {/* Render each item from the zooAnimal reducer */}
+                    {this.props.reduxState.bookList.map((book, i) => {
+                        return (<SearchTable key={i} book={book} />);
+                    })}
+                </tbody>
+            </table>
+
                 </div>
             
 
