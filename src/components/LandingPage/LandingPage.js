@@ -22,7 +22,7 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 
                 <div className="divSize">
                 <Typography id="welcome" variant="h5" gutterBottom>

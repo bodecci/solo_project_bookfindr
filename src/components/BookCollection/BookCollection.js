@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 
 const BookCollection = props => (
     <div>
-        <h3>This is the Book Collection in the Library for</h3>
+        <h3>Your Book Collection!</h3>
         {/* <pre>{this.props.user.id}</pre> */}
-        <BookDisplayTable />
+        <BookDisplayTable history={props.history} />
         <AddBook />
     </div>
 );

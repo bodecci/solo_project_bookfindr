@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
-import Fab from '@material-ui/core/Fab';
+import TextField from '@material-ui/core/TextField';
+
+
+
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -21,13 +24,7 @@ const CustomTableCell = withStyles(theme => ({
 
 
 class BookDisplayRow extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            open: false
-        }
-    }
+   
 
     deleteBook = () => {
         console.log('payload: ', this.props.book.ID);
@@ -37,9 +34,14 @@ class BookDisplayRow extends Component {
     }
 
     editBook = () => {
-        console.log('');
+        console.log('edit button clicked');
+        this.props.history.push('/editbooks')
         
     }
+
+   
+
+   
 
     
 
@@ -53,7 +55,7 @@ class BookDisplayRow extends Component {
               <CustomTableCell align="left">
 
                     <IconButton color="secondary" onClick={this.deleteBook} 
-                                aria-label="Delete">
+                        aria-label="Delete">
                          <DeleteIcon />
                     </IconButton>
                                 {/* <Button type='Delete'
@@ -65,6 +67,9 @@ class BookDisplayRow extends Component {
               <button onClick={this.editBook}>EDIT</button>
               </CustomTableCell>
             </TableRow>
+
+             
+
         );
     }
 }

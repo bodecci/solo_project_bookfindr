@@ -1,12 +1,20 @@
 .bttnSize {
-    font-size: 10px;
+    font-size: 24px;
     padding: 10px;
     margin: 20px;
-    width: 100px;
-    height: 70px;
-    justify-content: center;
+    width: 300px;
+    height: 150px;
+    justify-content: left;
 }
 
 .divSize {
     justify-content: right;
+}
+
+.container {
+    justify-content: center !important;
+    align-content: center !important;
+    padding: 50px;
+    margin-left: 25%;
+
 }

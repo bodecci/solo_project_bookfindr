@@ -42,7 +42,7 @@ class Search extends Component {
     render() {
         return (
                 <div>
-                <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre>
+                {/* <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre> */}
                 <form onSubmit={this.searchBook}>
                     <FormControl>
                     <p>Search Your Collection</p>

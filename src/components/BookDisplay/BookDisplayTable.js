@@ -52,7 +52,7 @@ class BookDisplayTable extends Component {
     render() {
         return (
             <div className="Book">
-                <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre>
+                {/* <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre> */}
     <Paper>
       <Table>
         <TableHead>
@@ -66,7 +66,8 @@ class BookDisplayTable extends Component {
         </TableHead>
         <TableBody>
                 {this.props.reduxState.bookList.map((book, id) => {
-                      return (<BookDisplayRow key={id} book={book} />);
+                      return (<BookDisplayRow history={this.props.history}
+                                 key={id} book={book} />);
                     })}
         </TableBody>
         </Table>
