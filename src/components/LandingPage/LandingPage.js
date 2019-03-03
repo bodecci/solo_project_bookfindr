@@ -16,7 +16,13 @@ class LandingPage extends Component {
 
     handleViewClick = () => {
         console.log('View Clicked');
-        this.props.history.push('/addbooks');
+        this.props.history.push('/books');
+        
+    }
+
+    handleAddBookClick = () => {
+        console.log('Add Books Clicked');
+        this.props.history.push('/addbooks')
         
     }
 
@@ -38,13 +44,15 @@ class LandingPage extends Component {
                    SEARCH<p>Library</p>
                 </button>
 
-                <div className="bttnSize">
                 <br></br>
-                 <Fab color="primary" aria-label="Add" 
+                <button className ="bttnSize" onClick={this.handleAddBookClick}>
+                    ADD<p>BOOKS</p> 
+                    </button>
+                    <br></br>
+                 {/* <Fab color="primary" aria-label="Add" 
                     align="center">
                     <AddIcon />
-                </Fab><p>Add Books</p>
-                </div>
+                </Fab><p>Add Books</p> */}
                 </div>
 
             </div>

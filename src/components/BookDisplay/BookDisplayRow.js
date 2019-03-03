@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import TextField from '@material-ui/core/TextField';
+import swal from 'sweetalert';
 
 
 
@@ -27,6 +28,24 @@ class BookDisplayRow extends Component {
    
 
     deleteBook = () => {
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Poof! Book deleted!", {
+                        icon: "success",
+                        });
+                    } else {
+                        swal("Book is Safe");
+                    }
+                });
+
         console.log('payload: ', this.props.book.ID);
         const action ={type: 'DELETE_BOOKS', payload: this.props.book.ID};
         
