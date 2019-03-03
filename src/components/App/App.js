@@ -22,6 +22,7 @@ import Search from '../Search/Search';
 
 import './App.css';
 import EditBook from '../EditBook/EditBook';
+import AddBook from '../AddBook/AddBook';
 
 class App extends Component {
   componentDidMount () {
@@ -53,9 +54,14 @@ class App extends Component {
               component={LandingPage}
             />
             <ProtectedRoute
-              exact path="/addbooks"
+              exact path="/books"
               component={BookCollection}
               />
+            <ProtectedRoute
+              exact path="/addbooks"
+              component={AddBook}
+              />
+
               <ProtectedRoute
                 exact path="/search"
                 component={Search}

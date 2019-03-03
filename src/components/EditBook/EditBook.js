@@ -34,7 +34,8 @@ class EditBook extends Component {
 
     render(){
         return(
-
+            <div>
+            <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre>
             <form onSubmit={this.editBook}>
                 <FormControl>
                     <p><b>Edit Book Title</b></p>
@@ -51,6 +52,7 @@ class EditBook extends Component {
                             </Button>
                 </FormControl>
             </form>
+            </div>
         );
     }
 }
