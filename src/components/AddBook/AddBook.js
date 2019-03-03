@@ -6,6 +6,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import swal from 'sweetalert';
 
 import './Addbook.css';
@@ -27,7 +28,7 @@ class AddBook extends Component {
 
     // dispatch the new book entered to the reducer
     addNewBook = (event) => {
-        swal("Good Job!", "book added to library", "success");
+        swal("Good Job!", "book added to Collection", "success");
         console.log('Form Submitted');
         event.preventDefault();
         console.log('newBook:', this.state.newBook);
@@ -63,6 +64,12 @@ class AddBook extends Component {
         
         return(
             <div>
+                
+                <br></br>
+                <Typography align="center" id="welcome" variant="h5" gutterBottom>
+                Add Books to your Collection
+                </Typography>
+                <br></br>
 
             
 
