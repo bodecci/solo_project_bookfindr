@@ -3,7 +3,25 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import SearchTable from './SearchTable';
+
+const CustomTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+    },
+}))(TableCell);
+
 
 class Search extends Component {
     constructor (props){
@@ -59,18 +77,23 @@ class Search extends Component {
                         SEARCH</Button>
                         </FormControl>
                 </form>
-
-             <table className="AnimalList">
-                <thead>
-                    <tr><th>Title</th><th>Author</th><th>ISBN #</th></tr>
-                </thead>
-                <tbody>
-                    {/* Render each item from the zooAnimal reducer */}
-                    {this.props.reduxState.bookList.map((book, i) => {
-                        return (<SearchTable key={i} book={book} />);
-                    })}
-                </tbody>
-            </table>
+                <Paper>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                 <CustomTableCell align="left">Title</CustomTableCell>
+                                <CustomTableCell align="left">Author</CustomTableCell>
+                                <CustomTableCell align="left">ISBN</CustomTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                             {/* Render each item from the zooAnimal reducer */}
+                             {this.props.reduxState.bookList.map((book, i) => {
+                                return (<SearchTable key={i} book={book} />);
+                                    })}
+                        </TableBody>
+                    </Table>
+                </Paper>
 
                 </div>
             
