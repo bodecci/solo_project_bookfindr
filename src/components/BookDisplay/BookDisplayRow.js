@@ -24,15 +24,6 @@ const CustomTableCell = withStyles(theme => ({
 
 
 class BookDisplayRow extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            editBookTitle: 'notYetChanged',
-            // editClick: false
-        }
-    }
-   
 
     deleteBook = () => {
 
@@ -60,59 +51,22 @@ class BookDisplayRow extends Component {
     }
 
     handleEditClick = () => {
-        const editedBook = prompt('new book name: ');
+        const editedBook = prompt('Enter New Book Title: ');
+        if(editedBook != null){
         console.log('editedBook: ', editedBook);
-        
-        this.setState({
-            editBookTitle: editedBook
-        });
 
         this.props.dispatch({
             type: 'EDIT_BOOKS',
             payload: {title:editedBook, id:this.props.book.ID}
         });
-
-        this.setState({
-            editBookTitle: ''
-        });
-        // this.editBook()
-        // this.handleEditBook();
     }
 
-    // handleEditBook = (event) => {
-    //     console.log('edit button clicked');
-    //      this.setState({
-    //          editBookTitle: event.target.value
-    //      });
-    // }
-
-    // editBook = () => {
-    
-    //     console.log('editBook: ', this.state.editBookTitle);
-
-    //     // this.props.dispatch({
-    //     //     type: 'EDIT_BOOKS',
-    //     //     payload: this.state.editBookTitle
-    //     // });
-
-    //     // this.setState({
-    //     //     editBookTitle: ''
-    //     // });
-    // }
+    }
 
 
     
 
     render(){
-
-        // let content = '';
-        // if(this.state.editClick) {
-        //     content = <form onSubmit={this.editBook}>
-        //     <input value={this.state.editBookTitle} placeholder="Book Title" 
-        //         onChange={this.handleEditClick}></input></form>
-        // } else {
-        //     content = <div></div>
-        // }
 
         return(
 
