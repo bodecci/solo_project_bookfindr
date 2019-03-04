@@ -5,7 +5,6 @@ import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import TextField from '@material-ui/core/TextField';
 import swal from 'sweetalert';
@@ -25,6 +24,14 @@ const CustomTableCell = withStyles(theme => ({
 
 
 class BookDisplayRow extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            editBookTitle: '',
+            editClick: false
+        }
+    }
    
 
     deleteBook = () => {
@@ -52,23 +59,53 @@ class BookDisplayRow extends Component {
         this.props.dispatch(action);
     }
 
-    editBook = () => {
-        console.log('edit button clicked');
-        this.props.history.push('/editbooks')
-        
+    handleEditClick = () => {
+        this.setState({
+            editClick: !(this.state.editClick)
+            
+        });
+        this.handleEditBook();
     }
 
-   
+    handleEditBook = (event) => {
+        console.log('edit button clicked');
+         this.setState({
+             editBookTitle: event.target.value
+         });
+    }
 
-   
+    editBook = (event) => {
+        event.preventDefault();
+        console.log('editBook: ', this.state.editBookTitle);
+
+        this.props.dispatch({
+            type: 'EDIT_BOOKS',
+            payload: this.state.editBookTitle
+        });
+
+        this.setState({
+            editBookTitle: ''
+        });
+    }
+
 
     
 
     render(){
+
+        let content = '';
+        if(this.state.editClick) {
+            content = <form onSubmit={this.editBook}>
+            <input value={this.state.editBookTitle} placeholder="Book Title" 
+                onChange={this.handleEditBook}></input></form>
+        } else {
+            content = <div>{this.props.book.Book_Title}</div>
+        }
+
         return(
 
             <TableRow>
-              <CustomTableCell align="left">{this.props.book.Book_Title}</CustomTableCell>
+              <CustomTableCell align="left"><div>{content}</div></CustomTableCell>
               <CustomTableCell align="left">{this.props.book.Author_Name}</CustomTableCell>
               <CustomTableCell align="left">{this.props.book.Category}</CustomTableCell>
               <CustomTableCell align="left">
@@ -83,9 +120,10 @@ class BookDisplayRow extends Component {
                                 Delete</Button> */}
               </CustomTableCell>
               <CustomTableCell align="left">
-              <button onClick={this.editBook}>EDIT</button>
+              <button onClick={this.handleEditClick}>EDIT</button>
               </CustomTableCell>
             </TableRow>
+
 
              
 

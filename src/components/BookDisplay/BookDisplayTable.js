@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 import './BookDisplay.css';
 
@@ -49,6 +50,10 @@ class BookDisplayTable extends Component {
         this.props.dispatch(action);
     }
 
+    searchBooks = () => {
+        this.props.history.push('/search');
+    }
+
     render() {
         return (
             <div className="Book">
@@ -72,6 +77,8 @@ class BookDisplayTable extends Component {
         </TableBody>
         </Table>
         </Paper>
+        <br></br>
+        <Button onClick={this.searchBooks}>SEARCH YOUR COLLECTION</Button>
         </div>
         );
     }

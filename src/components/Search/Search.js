@@ -11,6 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import SearchTable from './SearchTable';
+import './Search.css';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -59,6 +60,8 @@ class Search extends Component {
 
     render() {
         return (
+
+            <div className="Book">
                 <div>
                 {/* <pre>{JSON.stringify(this.props.reduxState.bookList)}</pre> */}
                 <form onSubmit={this.searchBook}>
@@ -94,7 +97,7 @@ class Search extends Component {
                         </TableBody>
                     </Table>
                 </Paper>
-
+                </div>
                 </div>
             
 
