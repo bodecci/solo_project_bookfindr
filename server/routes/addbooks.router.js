@@ -98,6 +98,8 @@ router.put('/:id', async (req, res) => {
         const updateBook = req.body;
         const updateId = req.params.id;
         console.log('updateBook', req.body);
+        console.log('updateID, ', updateId);
+        
 
 
         try {

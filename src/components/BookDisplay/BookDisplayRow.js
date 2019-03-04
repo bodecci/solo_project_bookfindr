@@ -28,8 +28,8 @@ class BookDisplayRow extends Component {
         super(props);
 
         this.state = {
-            editBookTitle: '',
-            editClick: false
+            editBookTitle: 'notYetChanged',
+            // editClick: false
         }
     }
    
@@ -60,52 +60,64 @@ class BookDisplayRow extends Component {
     }
 
     handleEditClick = () => {
+        const editedBook = prompt('new book name: ');
+        console.log('editedBook: ', editedBook);
+        
         this.setState({
-            editClick: !(this.state.editClick)
-            
+            editBookTitle: editedBook
         });
-        this.handleEditBook();
-    }
-
-    handleEditBook = (event) => {
-        console.log('edit button clicked');
-         this.setState({
-             editBookTitle: event.target.value
-         });
-    }
-
-    editBook = (event) => {
-        event.preventDefault();
-        console.log('editBook: ', this.state.editBookTitle);
 
         this.props.dispatch({
             type: 'EDIT_BOOKS',
-            payload: this.state.editBookTitle
+            payload: {title:editedBook, id:this.props.book.ID}
         });
 
         this.setState({
             editBookTitle: ''
         });
+        // this.editBook()
+        // this.handleEditBook();
     }
+
+    // handleEditBook = (event) => {
+    //     console.log('edit button clicked');
+    //      this.setState({
+    //          editBookTitle: event.target.value
+    //      });
+    // }
+
+    // editBook = () => {
+    
+    //     console.log('editBook: ', this.state.editBookTitle);
+
+    //     // this.props.dispatch({
+    //     //     type: 'EDIT_BOOKS',
+    //     //     payload: this.state.editBookTitle
+    //     // });
+
+    //     // this.setState({
+    //     //     editBookTitle: ''
+    //     // });
+    // }
 
 
     
 
     render(){
 
-        let content = '';
-        if(this.state.editClick) {
-            content = <form onSubmit={this.editBook}>
-            <input value={this.state.editBookTitle} placeholder="Book Title" 
-                onChange={this.handleEditBook}></input></form>
-        } else {
-            content = <div>{this.props.book.Book_Title}</div>
-        }
+        // let content = '';
+        // if(this.state.editClick) {
+        //     content = <form onSubmit={this.editBook}>
+        //     <input value={this.state.editBookTitle} placeholder="Book Title" 
+        //         onChange={this.handleEditClick}></input></form>
+        // } else {
+        //     content = <div></div>
+        // }
 
         return(
 
             <TableRow>
-              <CustomTableCell align="left"><div>{content}</div></CustomTableCell>
+              <CustomTableCell align="left"><div>{this.props.book.Book_Title}</div></CustomTableCell>
               <CustomTableCell align="left">{this.props.book.Author_Name}</CustomTableCell>
               <CustomTableCell align="left">{this.props.book.Category}</CustomTableCell>
               <CustomTableCell align="left">

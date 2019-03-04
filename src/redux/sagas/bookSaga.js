@@ -49,7 +49,7 @@ function* deleteBooks(action) {
 
 function* editBooks (action){
     try {
-        yield axios.put(`api/addbooks/${action.payload.id}`);
+        yield axios.put(`api/addbooks/${action.payload.id}`, action.payload);
         const nextAction = {
             type: 'FETCH_BOOKS'
         };
