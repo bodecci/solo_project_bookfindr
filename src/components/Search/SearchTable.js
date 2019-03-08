@@ -26,13 +26,13 @@ class SearchTable extends Component {
 
     render(){
         return(
-            <div>
+            
                 <TableRow>
                     <CustomTableCell align="left">{this.props.book.title}</CustomTableCell>
                     <CustomTableCell align="left">{this.props.book.ISBN}</CustomTableCell>
                     <CustomTableCell align="left">{this.props.book.name}</CustomTableCell>
                 </TableRow>
-            </div>
+           
         )
     }
 }

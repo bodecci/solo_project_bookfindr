@@ -46,7 +46,7 @@ class LandingPage extends Component {
 
                 <br></br>
                 <button className ="bttnSize" onClick={this.handleAddBookClick}>
-                    ADD<p>BOOKS</p> 
+                    ADD<p>Books</p> 
                     </button>
                     <br></br>
                  {/* <Fab color="primary" aria-label="Add" 
