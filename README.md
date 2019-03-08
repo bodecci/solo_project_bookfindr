@@ -27,17 +27,20 @@ React, Redux, JavaScript, Express, Passport, PostgreSQL, Material UI, CSS
 
 ## APLICATION DEMO
 
-### Add 
+### Add Book
 ![](public/images/solo_addBook.gif)
 
-### Edit
+
+### Edit Book
 ![](public/images/solo_editBook.gif)
 
-### Search
-![](public/images/search.gif)
 
-### Delete
-![](public/images/delete.gif)
+### Search Book
+![](public/images/solo_search.gif)
+
+
+### Delete Book
+![](public/images/solo_delete.gif)
 
 
 
