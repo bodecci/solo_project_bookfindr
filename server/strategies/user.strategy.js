@@ -38,7 +38,7 @@ passport.use('local', new LocalStrategy({
           // all good! Passwords match!
           done(null, user);
         } else if (user) {
-          // not good! Passwords don't match!
+          // not good! Passwords don't match! 
           done(null, false, { message: 'Incorrect credentials.' });
         } else {
           // not good! No user with that name
