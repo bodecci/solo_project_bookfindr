@@ -28,7 +28,7 @@ class EditBook extends Component {
                             payload: this.state.editBookTitle});
 
         this.setState({
-            editBookTitle: ''
+            editBookTitle:''
         });
     }
 
